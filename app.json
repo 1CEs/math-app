@@ -8,6 +8,9 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "assets": [
+      "./assets/fonts/default.ttf"
+    ],
     "splash": {
       "backgroundColor": "#060a0d",
       "imageWidth": 500,
@@ -37,6 +40,12 @@
           "backgroundColor": "#232323",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/default.ttf"]
         }
       ]
     ],
