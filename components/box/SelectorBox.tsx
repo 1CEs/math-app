@@ -1,10 +1,11 @@
 import { colors } from '@/constant/color'
-import React, { useEffect, useState } from 'react'
-import { View, ViewProps, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native'
-import { Audio } from 'expo-av'
+import React from 'react'
+import { View, ViewProps, StyleSheet, ImageBackground, ImageSourcePropType } from 'react-native'
+import SoundTouchable from '../SoundTouchable'
 
 type Props = ViewProps & {
   isSelected: boolean
+  imagePath: ImageSourcePropType
   handleSelect: () => void
 }
 
@@ -13,29 +14,29 @@ const SelectorBox = (props: Props) => {
     <View style={{
       ...(props.isSelected ? styles.active : styles.inactive),
       borderRadius: 15,
-      borderWidth: 3,
+      borderWidth: 2,
       padding: 10,
       overflow: 'hidden',
     }}>
-      <TouchableOpacity {...props}
+      <SoundTouchable {...props}
         onPress={props.handleSelect}
         className={`${props.className}`}
       >
         <ImageBackground
-          source={require('../../assets/game/humans/angel.png')}
+          source={props.imagePath}
           style={{
-            width: 50,
-            height: 50,
+            width: 25,
+            height: 25,
           }}
           resizeMode="cover"
           imageStyle={{
             transform: [
-              { scale: 2.5 },
-              { translateY: 15 }
+              { scale: 3 },
+              { translateY: 6 }
             ]
           }}
         />
-      </TouchableOpacity>
+      </SoundTouchable>
     </View>
   )
 }

@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
 import 'react-native-reanimated';
 import '../global.css';
-import ChooseScreen from './choose';
 import SoundWrapper from '@/components/SoundWrapper';
+import ChooseScreen from './choose';
+import { usePlayerStore } from '@/store/player.store';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
     'default': require('../assets/fonts/default.ttf'),
   });
+  const loadPlayer = usePlayerStore((state) => state.loadPlayerFromStorage);
+  const player = usePlayerStore((state) => state.player);
 
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
     }
+    loadPlayer();
   }, [loaded]);
 
   if (!loaded) {
@@ -29,12 +30,13 @@ export default function RootLayout() {
 
   return (
     <SoundWrapper>
-      {/* <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" /> */}
-      <ChooseScreen />
+      {player ? (
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+      ) : (
+        <ChooseScreen/>
+      )}
     </SoundWrapper>
   );
 }

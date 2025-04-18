@@ -3,6 +3,7 @@ import { Tabs } from 'expo-router';
 import React, { useState } from 'react';
 import { Platform, TouchableOpacity, View, Text } from 'react-native';
 import { colors } from '@/constant/color';
+import SoundTouchable from '@/components/SoundTouchable';
 
 export default function TabLayout() {
   const [selectedTab, setSelectedTab] = useState(tabsMenu[0].path);
@@ -27,7 +28,7 @@ export default function TabLayout() {
           name={tab.path}
           options={({ navigation }) => ({
             tabBarButton: () => (
-              <TouchableOpacity
+              <SoundTouchable
                 onPress={() => {
                   navigation.navigate(tab.path)
                   setSelectedTab(tab.path)
@@ -36,13 +37,13 @@ export default function TabLayout() {
               >
                 <View className='flex items-center justify-center gap-y-1'>
                     {tab.icon(selectedTab === tab.path ? colors.primary : colors.gray, 24)}
-                  <Text 
+                  <Text
                     className={`${selectedTab === tab.path ? 'text-primary' : 'text-gray'} text-xs font-bold`}
                   >
                     {tab.title}
                   </Text>
                 </View>
-              </TouchableOpacity>
+              </SoundTouchable>
             ),
           })}
         />
