@@ -11,9 +11,10 @@ import SoundTouchable from '../SoundTouchable'
 
 type Props = {
     progress?: number; // Progress value between 0 and 100
+    noFooter?: boolean;
 }
 
-const LevelProgress = ({ progress = 23 }: Props) => {
+const LevelProgress = ({ progress = 23, noFooter = false }: Props) => {
     return (
         <Card>
             <CardHeader title='Level Progress' icon={<CarbonSkillLevelAdvanced color={colors['background-bright']} width={18} height={18} />} />
@@ -36,11 +37,11 @@ const LevelProgress = ({ progress = 23 }: Props) => {
                     </View>
                 </View>
             </CardBody>
-            <CardFooter className='flex flex-row justify-end'>
+            {!noFooter && <CardFooter className='flex flex-row justify-end'>
                 <SoundTouchable className='p-2 bg-background-dark rounded-lg'>
                     <Text className='text-sm text-white font-bold'>Let's level up</Text>
                 </SoundTouchable>
-            </CardFooter>
+            </CardFooter>}
         </Card>
     )
 }
