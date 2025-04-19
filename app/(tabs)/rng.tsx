@@ -1,9 +1,13 @@
-import { View, Text } from "react-native";
+import PoolDisplay from "@/components/PoolDisplay";
+import { View, Text, ScrollView } from "react-native";
 
 export default function RngScreen() {
     return (
-        <View className='h-screen p-4 bg-background'>
-            <Text>RNG</Text>
-        </View>
+        <ScrollView className='h-screen w-screen p-4 bg-background'>
+            <View className='flex flex-col gap-y-2 pb-8'>
+                <PoolDisplay />
+            </View>
+        </ScrollView>
+
     );
 }
