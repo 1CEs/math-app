@@ -3,18 +3,35 @@ import { View, Text, Image, StyleSheet } from 'react-native'
 import DetailCard from './DetailCard'
 import Svg, { Defs, Pattern, Path, Rect } from 'react-native-svg'
 
+// Import all possible avatar images
+import maleAvatar from '@/assets/game/humans/male.png'
+import femaleAvatar from '@/assets/game/humans/female.png'
+import angelAvatar from '@/assets/game/humans/angel.png'
+
+// Create a mapping of avatar names to their imported images
+const avatarMap: Record<string, any> = {
+    'male': maleAvatar,
+    'female': femaleAvatar,
+    'angel': angelAvatar,
+    'default': maleAvatar // Use male as default
+}
+
 type Props = {
     player: Player
 }
 
 const CARD_WIDTH = 350
-const CARD_HEIGHT = 200
+const CARD_HEIGHT = 150
 
 const PlayerCard = ({ player }: Props) => {
-    console.log(player)
+    // Get the avatar image based on the player's avatar name
+    const getAvatarImage = () => {
+        return avatarMap[player.avatar] || avatarMap.default
+    }
+
     return (
         <View
-            className="rounded-lg w-full flex flex-row items-center overflow-hidden justify-center border border-gray"
+            className="rounded-lg w-full flex flex-row items-center overflow-hidden justify-center border-2 border-black"
             style={{ position: 'relative', height: CARD_HEIGHT }}
         >
             <Svg
@@ -44,7 +61,7 @@ const PlayerCard = ({ player }: Props) => {
             {/* Content */}
             <View className="flex-1 items-center">
                 <Image
-                    source={player.avatar}
+                    source={getAvatarImage()}
                     style={{ width: 100, height: 100 }}
                     resizeMode="contain"
                 />

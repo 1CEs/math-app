@@ -7,6 +7,7 @@ import '../global.css';
 import SoundWrapper from '@/components/SoundWrapper';
 import ChooseScreen from './choose';
 import { usePlayerStore } from '@/store/player.store';
+import { View } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,7 +30,7 @@ export default function RootLayout() {
   }
 
   return (
-    <SoundWrapper>
+    <View className='flex-1'>
       {player ? (
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -37,6 +38,6 @@ export default function RootLayout() {
       ) : (
         <ChooseScreen/>
       )}
-    </SoundWrapper>
+    </View>
   );
 }

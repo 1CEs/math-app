@@ -15,16 +15,17 @@ const DetailCard = (props: Props) => {
             style={{
                 transform: [{ translateX: props.isTransform ? -20 : 0 }]
             }}
-            className='flex flex-row gap-x-2 bg-background border border-gray rounded-lg overflow-hidden w-[150px]'>
-            <View className=' w-3/6 rounded-lg p-2'>
-                <Text className='text-xs text-white'>{props.title}</Text>
+            className='flex flex-row gap-x-2 border border-background-dark bg-background-bright rounded-lg overflow-hidden w-[150px]'>
+            <View className=' w-3/6 rounded-lg p-1 px-2'>
+                <Text className='text-xs text-gray-light'>{props.title}</Text>
             </View>
             <View className='w-3/6 rounded-lg'>
                 <LinearGradient
+                    className='p-1 flex-1 items-center justify-center'
                     colors={[colors.primary, colors.secondary]}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
-                    style={{ padding: 8, borderRadius: 8 }}
+                    style={{ borderRadius: 8 }}
                 >
                     <Text className='text-xs text-white'>{props.value}</Text>
                 </LinearGradient>

@@ -14,6 +14,8 @@ module.exports = {
       gray: 'var(--gray)',
       'gray-light': 'var(--gray-light)',
       'background-bright': 'var(--background-bright)',
+      'background-dark': 'var(--background-dark)',
+      golden: 'var(--golden)',
     }
   },
   plugins: [
@@ -28,6 +30,8 @@ module.exports = {
           '--gray': '#606060',
           '--gray-light': '#b3b3b3',
           '--background-bright': '#202935',
+          '--background-dark': '#192029',
+          '--golden': '#ffc100',
         }
       })
     }

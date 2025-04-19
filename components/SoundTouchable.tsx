@@ -4,9 +4,10 @@ import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
 type Props = TouchableOpacityProps & {
     children: React.ReactNode
+    className?: string
 }
 
-const SoundTouchable = ({ children, onPress, ...props }: Props) => {
+const SoundTouchable = ({ children, onPress, className, ...props }: Props) => {
     const [sound, setSound] = useState<Audio.Sound | null>(null);
 
     useEffect(() => {
@@ -32,7 +33,7 @@ const SoundTouchable = ({ children, onPress, ...props }: Props) => {
     }
 
     return (
-        <TouchableOpacity {...props} onPress={handlePress}>
+        <TouchableOpacity {...props} onPress={handlePress} className={className}>
             {children}
         </TouchableOpacity>
     )
